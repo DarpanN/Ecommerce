@@ -1,0 +1,48 @@
+<html>
+    <body>
+this is product list page <br>
+{% comment %} to get views.py data {% endcomment %}
+name:{{name}} <br>
+address:{{address}} <br>
+phone:{{phone}}<br>
+{% comment %} to get data from database objects {% endcomment %}
+object:
+id:{{object.id}}
+name:{{object.name}}
+price:{{object.price}} <br>
+{% comment %} to complete file path we we need ur {% endcomment %}
+{% comment %} cover_file:{{object.cover_file.url}}<br>  {% endcomment %}
+cover_file:<img src="{{object.cover_file.url}}"> <br>
+create_at:{{object.create_at}} 
+<br>
+
+object list: <br>
+{% for pro_obj in product_list %}
+product_id: {{pro_obj.id}} <br>
+product_cat: {{pro_obj.product_category}} <br>
+product_name: {{pro_obj.name}},<br>
+{% endfor %}
+
+<div class="container">
+    <h2>Product Add</h2>
+    <form action="{% url 'product_create' %}" method="POST">
+        <!-- this is also url of another method -->
+        {% comment %} <form action="product/create" method="POST"> {% endcomment %}
+        {% csrf_token %}
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Price</label>
+        <input type="text" id="text" name="price" required><br><br>
+
+
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+    </body>
+</html>

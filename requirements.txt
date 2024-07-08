@@ -1,0 +1,6 @@
+Python==3.12.1
+django==5.0.6
+psycopg2-binary==2.9.9
+pip==24.1.1
+django-environ==0.11.2
+Pillow==10.4.0
