@@ -31,8 +31,18 @@ product_name: {{pro_obj.name}},<br>
         {% csrf_token %}
         <label for="name">Name</label>
         <input type="text" id="name" name="name" required><br><br>
+        
+            <label for="product_category">Choose a category:</label>
+            <select id="product_category" name="product_category">
+                {% for cat in categories %}
+                <option value="{{cat.id}}">{{cat.name}}</option>
+                
 
-        <label for="email">Price</label>
+                {% endfor %}
+            </select>
+       
+
+        <label for="price">Price</label>
         <input type="text" id="text" name="price" required><br><br>
 
 
