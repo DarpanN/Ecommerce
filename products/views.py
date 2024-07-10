@@ -49,5 +49,17 @@ def category_list(request) :
 
 def category_create(request):
     cat_form = CategoryForm()
+    if request.method == "POST":
+        data = request.POST
+        # print(data)
+        form = CategoryForm(data=data) 
+        #to check valid form 
+        if form.is_valid():
+            form.save()
+            return redirect(reverse("category_list"))#if data saved redirect to category list
+        else:
+            print("form ma issue xa")
+    
+     
     return render (request, 'category_create.html', {"form":cat_form})
 
