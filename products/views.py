@@ -8,6 +8,22 @@ from products.forms import CategoryForm
 # Create your views here.
 def product(request):
     products = Product.objects.all()
+    name = request.GET.get('name', False)
+    # price = request.GET.get('price', False)
+
+    cate = request.GET.get('name', False)
+
+    print(name) #if kehe pathako xena vane false asyounxa nabai value
+    if name:
+        # products = Product.objects.filter(name=name)
+        products = Product.objects.filter(name__icontains=name) #contains case sensivity hunxa icontains hudaina
+    # if price:
+        # products = Product.objects.filter(price=price)
+
+    if cate:
+        products = Product.objects.filter(product_category_id=cate)
+
+    print(products)
     product_obj = Product.objects.get(id=2)
     categories = Category.objects.all()
     # print(categories)
@@ -58,7 +74,8 @@ def category_create(request):
             form.save()
             return redirect(reverse("category_list"))#if data saved redirect to category list
         else:
-            print("form ma issue xa")
+           
+           return render (request, 'category_create.html', {"form":form, "error": form.errors })
     
      
     return render (request, 'category_create.html', {"form":cat_form})

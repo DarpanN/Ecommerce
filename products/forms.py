@@ -11,9 +11,9 @@ class CategoryForm(forms.ModelForm):
         #fields = "__all__" # its exclude name field and loaded rest of left field from backend
         #exclude = ['name']
         
-    def clean_name(self):
-         print("clean name", self.cleaned_data['name'])
-         return self.cleaned_data
+    # def clean_name(self):
+    #      print("clean name", self.cleaned_data['name'])
+    #      return self.cleaned_data
 
 
      
